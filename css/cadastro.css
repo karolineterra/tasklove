@@ -1,0 +1,162 @@
+.cadastroBody {
+    display: flex;
+}
+.cadastroPainel {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.cadastroPainel img {
+    width: 50%;
+}
+
+.cadastroFormularioContainer {
+    background-color: #FFDBAF;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cadastroFormulario {
+    display: flex;
+    flex-direction: column;
+}
+
+.cadastroFormulario h2 {
+    font-size: 40px;
+    font-weight: 500;
+    align-self: center;
+}
+
+.cadastroFormulario input {
+    width: 488px;
+    padding: 12px 4px;
+    border: 1px solid #620000;
+    background-color: #f6f6f6;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+.cadastroFormulario label {
+    font-size: 20px;
+    font-weight: 400;
+}
+.cadastroFormulario button {
+    width: 40%;
+    align-self: center;
+    padding: 20px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #620000;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cadastroFormulario input:not(:last-of-type) {
+    margin-bottom: 26px;
+}
+.cadastroFormulario label:first-of-type {
+    margin-top: 12px;
+}
+.cadastroFormulario a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+/*      Modal         */
+
+/* Estilos para o modal */
+#modal {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.close {
+    color: #aaa;
+    align-self: flex-end;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+}
+
+.modal-title {
+    align-self: center;
+    margin-bottom: 54px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.modal-content label {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    
+}
+
+.modal input[type="color"] {
+    width: 340px;
+    margin-bottom: 48px;
+}
+
+.aviso {
+    font-size: 16px;
+}
+
+.corFonte {
+    width: 340px;
+    font-size: 16px;
+    margin-bottom: 48px;
+}
+
+.coresDemonstracao {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 48px;
+}
+
+.coresDemonstracao p {
+    font-size: 24px;
+}
+
+.coresDemonstracao div {
+    padding: 20px;
+}
+
+.modal-botao-confirmar {
+    background-color: #620000;
+    color: #fff;
+    font-size: 16px;
+    width: fit-content;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 4px;
+    align-self: center;
+}

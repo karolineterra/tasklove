@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskLove | Cadastro</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="cadastroBody">
+    <div class="cadastroPainel">
+      <img src="/img/TaskLove.png" alt="" />
+      <img src="img/lendo-um-livro.png" alt="" />
+    </div>
+
+    <div class="cadastroFormularioContainer">
+      <form class="cadastroFormulario">
+        <h2>Criar Conta</h2>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" required autocomplete="off" />
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          autocomplete="off"
+        />
+        <label for="senha">Senha</label>
+        <input
+          type="password"
+          id="senha"
+          name="senha"
+          required
+          autocomplete="off"
+        />
+        <label for="confirmarSenha">Confirmar Senha</label>
+        <input
+          type="password"
+          id="confirmarSenha"
+          name="confirmarSenha"
+          required
+          autocomplete="off"
+        />
+        <br />
+        <a href="pagina-de-login.html">Já possui uma conta?</a>
+        <br />
+
+        <button type="button" id="btnCadastrar">Cadastrar</button>
+      </form>
+    </div>
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h1 class="modal-title">Informações Adicionais</h1>
+        <label for="corFundo">Selecione sua cor favorita</label>
+        <input type="color" id="corInput" value="#ff0000" />
+
+        <label for="corFonte">
+          Selecione a cor da fonte
+          <span class="aviso"
+            >(recomendamos preto caso sua cor favorita for clara e branco caso
+            seja escura!)</span
+          ></label
+        >
+        <select id="corFonte" class="corFonte">
+          <option value="#ffffff">Branco</option>
+          <option value="#000000">Preto</option>
+        </select>
+        <div class="coresDemonstracao">
+          <p>Sua visualização será assim:</p>
+          <div class="corPadrao">
+            <p class="corFontePadrao">Teste de cores</p>
+          </div>
+        </div>
+        <button class="modal-botao-confirmar">Salvar Informações</button>
+      </div>
+    </div>
+    <script type="module" src="./js/script.js"></script>
+  </body>
+</html>
