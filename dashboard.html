@@ -7,12 +7,44 @@
     <title>TaskLove | Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body>
-    <header class="corPadrao menuLateral">
-      <p class="corFontePadrao">Paragrafo teste</p>
-    </header>
-    <h1 class="boas-vindas"></h1>
+  <body class="dashboardBody">
+    <header class="menuLateral">
+    <a class="profileEdit" href="/profile.html">
+        <div class="profileItensColumn">
+          <img class="menuIcon" src="./img/icon-person.svg" alt="">
+          <p class="userNameProfile"></p>
+        </div>
+        <img src="img/icon-pencil.svg" alt="">
+    </a>
 
-    <script src="js/dashboard/script.js" type="module"></script>
+    <div class="iconesProximosColuna">
+      <a href=""><img class="menuIcon" src="img/icon-grid-two-up.svg" alt=""></a>
+      <a href=""><img class="menuIcon" src="img/icon-pieChart.svg" alt=""></a>
+    </div>
+
+    <div class="iconesProximosLinha">
+      <a href=""><img class="menuIcon" src="img/icon-config.svg" alt=""></a>
+      <a href=""><img class="menuIcon" src="img/icon-account-logout.svg" alt=""></a>
+    </div>
+    </header>
+
+    <main class="areaConteudo">
+      <div class="painelConteudo corPadrao">
+        <div class="painelConteudoEsquerda">
+          <h1 class="boas-vindas corFontePadrao"></h1>
+          <div class="">
+            <div class="corFontePadrao"></div>
+            <div class="corFontePadrao"></div>
+            <div class="corFontePadrao"></div>
+          </div>
+        </div>
+        <div class="painelConteudoDireita">
+          <img src="img/meditacao.png" alt="">
+        </div>
+        
+      </div>
+    </main>
+
+    <script src="./js/dashboard/script.js" type="module"></script>
   </body>
 </html>

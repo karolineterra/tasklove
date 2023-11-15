@@ -1,9 +1,7 @@
-// script.js
-import initColorSelector from "./index/modules/colorSelector.js.js";
+import initColorSelector from "./modules/colorSelector.js";
 import initCadastroModal from "./modules/cadastroModal.js";
-import initRedirecionador from "./index/modules/redirecionador.js.js";
+import initRedirecionador from "./modules/redirecionador.js";
 import validarCadastro from "./modules/validarCadastro.js";
-
 
 initColorSelector();
 const cadastroModal = initCadastroModal();
