@@ -69,6 +69,21 @@
     font-weight: bold;
 }
 
+.erroCadastro {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid red;
+    gap: 18px;
+    border-radius: 5px;
+}
+
+.erroCadastro img {
+    width: 36px;
+}
+
 /*      Modal         */
 
 /* Estilos para o modal */

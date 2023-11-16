@@ -5,43 +5,153 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TaskLove | Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="dashboardBody">
     <header class="menuLateral">
-    <a class="profileEdit" href="/profile.html">
+      <a class="profileEdit" href="/profile.html">
         <div class="profileItensColumn">
-          <img class="menuIcon" src="./img/icon-person.svg" alt="">
+          <img class="menuIcon" src="./img/icon-person.svg" alt="" />
           <p class="userNameProfile"></p>
         </div>
-        <img src="img/icon-pencil.svg" alt="">
-    </a>
+        <img src="img/icon-pencil.svg" alt="" />
+      </a>
 
-    <div class="iconesProximosColuna">
-      <a href=""><img class="menuIcon" src="img/icon-grid-two-up.svg" alt=""></a>
-      <a href=""><img class="menuIcon" src="img/icon-pieChart.svg" alt=""></a>
-    </div>
+      <div class="iconesProximosColuna">
+        <a href=""
+          ><img class="menuIcon" src="img/icon-grid-two-up.svg" alt=""
+        /></a>
+        <a href=""
+          ><img class="menuIcon" src="img/icon-pieChart.svg" alt=""
+        /></a>
+      </div>
 
-    <div class="iconesProximosLinha">
-      <a href=""><img class="menuIcon" src="img/icon-config.svg" alt=""></a>
-      <a href=""><img class="menuIcon" src="img/icon-account-logout.svg" alt=""></a>
-    </div>
+      <div class="iconesProximosLinha">
+        <a href=""><img class="menuIcon" src="img/icon-config.svg" alt="" /></a>
+        <a href="./index.html"
+          ><img class="menuIcon" src="img/icon-account-logout.svg" alt=""
+        /></a>
+      </div>
     </header>
 
     <main class="areaConteudo">
       <div class="painelConteudo corPadrao">
         <div class="painelConteudoEsquerda">
           <h1 class="boas-vindas corFontePadrao"></h1>
-          <div class="">
-            <div class="corFontePadrao"></div>
-            <div class="corFontePadrao"></div>
-            <div class="corFontePadrao"></div>
+
+          <div class="cardsProgresso">
+            <div class="corFontePadrao todoTotalTasks progressCard">
+              <div class="todoTotal cardCont">12</div>
+              <p class="cardTitle">To-do</p>
+            </div>
+
+            <div class="corFontePadrao progressTotalTasks progressCard">
+              <div class="progressTotal cardCont">2</div>
+              <p class="cardTitle">In Progress</p>
+            </div>
+
+            <div class="corFontePadrao doneTotalTasks progressCard">
+              <div class="doneTotal cardCont">2</div>
+              <p class="cardTitle">Done</p>
+            </div>
           </div>
         </div>
         <div class="painelConteudoDireita">
-          <img src="img/meditacao.png" alt="">
+          <img src="img/meditacao.png" alt="" />
         </div>
-        
+      </div>
+
+      <div class="espacoQuadro">
+        <div class="quadroTodo quadro corPadrao">
+          <h1 class="quadroTitulo corFontePadrao">To-do</h1>
+          <div class="tasksSpace">
+            <div class="task">
+              <h2>Revisar questões</h2>
+              <p>
+                Tirar um tempo para revisar questões de matemática, física e
+                português.
+              </p>
+              <div class="statusDatas">
+                <div class="status"></div>
+                <span class="dataEntrega">12/12/2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quadroProgress quadro corPadrao">
+          <h1 class="quadroTitulo corFontePadrao">In Progress</h1>
+          <div class="tasksSpace">
+            <div class="task">
+              <h2>Revisar questões</h2>
+              <p>
+                Tirar um tempo para revisar questões de matemática, física e
+                português.
+              </p>
+              <div class="statusDatas">
+                <div class="status"></div>
+                <span class="dataEntrega">12/12/2023</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quadroDone quadro corPadrao">
+          <h1 class="quadroTitulo corFontePadrao">Done</h1>
+          <div class="tasksSpace">
+            <div class="task">
+              <h2>Revisar questões</h2>
+              <p>
+                Tirar um tempo para revisar questões de matemática, física e
+                português.
+              </p>
+              <div class="statusDatas">
+                <div class="status"></div>
+                <span class="dataEntrega">12/12/2023</span>
+              </div>
+            </div>
+
+            <div class="task">
+              <h2>Revisar questões</h2>
+              <p>
+                Tirar um tempo para revisar questões de matemática, física e
+                português.
+              </p>
+              <div class="statusDatas">
+                <div class="status"></div>
+                <span class="dataEntrega">12/12/2023</span>
+              </div>
+            </div>
+
+            <div class="task">
+              <h2>Revisar questões</h2>
+              <p>
+                Tirar um tempo para revisar questões de matemática, física e
+                português.
+              </p>
+              <div class="statusDatas">
+                <div class="status"></div>
+                <span class="dataEntrega">12/12/2023</span>
+              </div>
+            </div>
+
+            <div class="task">
+              <h2>Revisar questões</h2>
+              <p>
+                Tirar um tempo para revisar questões de matemática, física e
+                português.
+              </p>
+              <div class="statusDatas">
+                <div class="status"></div>
+                <span class="dataEntrega">12/12/2023</span>
+              </div>
+            </div>
+
+            <button class="adicionarCard">
+              <span>+</span> Adicionar Cartão
+            </button>
+          </div>
+        </div>
       </div>
     </main>
 

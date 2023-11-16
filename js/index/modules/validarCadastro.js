@@ -4,9 +4,13 @@ export default function validarCadastro() {
   const senha = document.getElementById("senha").value;
   const confirmarSenha = document.getElementById("confirmarSenha").value;
 
+  const erroCadastro = document.querySelector(".erroCadastro");
+
   // Adicione suas regras de validação aqui
   if (nome === "" || email === "" || senha === "" || senha !== confirmarSenha) {
-    alert("Por favor, preencha todos os campos corretamente.");
+    erroCadastro.innerHTML =
+      "<img src='./img/icon-alerta.png'> <p>Por favor, preencha todos os campos corretamente.</p>";
+    erroCadastro.classList.add("ativo");
     return false; // Impede a abertura do modal se a validação falhar
   }
 
