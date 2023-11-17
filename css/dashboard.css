@@ -122,7 +122,7 @@
 }
 
 .quadro {
-    width: 320px;
+    width: 400px;
     height: 520px;
     padding: 20px;
     border-radius: 10px;
@@ -179,14 +179,70 @@
 
 .adicionarCard {
     background: rgba(217, 217, 217, 0.43);
-    width: 60%;
+    width: 50%;
     align-self: center;
     padding: 12px 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
 }
+
+.tasksSpace form {
+    background-color: rgba(0, 0, 0, 0.51);;
+    padding: 14px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-radius: 5px;
+}
+
+.tasksSpace form input[type=text],textarea {
+    background: none;
+    border: none; 
+    color: white;  
+}
+
+.tasksSpace form input[type=text]::placeholder,textarea::placeholder {
+    color: #fff;
+}
+
+.tasksSpace form input[type=text] {
+    font-size: 18px;
+    font-weight: bold;
+}
+.tasksSpace form textarea {
+    resize: none;
+    font-size: 14px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.24);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.tasksSpace label[for=prazo] {
+    color: white;
+    font-size: 18px;
+}
+
+.tasksSpace input[type="date"] {
+    padding: 4px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.24);
+    color: white;
+    border: none;
+}
+.tasksSpace button[type="submit"] {
+    width: 50%;
+    align-self: center;
+    padding: 12px 4px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+
