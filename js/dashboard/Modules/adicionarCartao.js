@@ -32,11 +32,9 @@ export default function adicionarCartao() {
           // Cria um novo cartão com os valores do formulário
           const novoCartao = criarCartao(nome, descricao, prazo);
 
-          // Adiciona ouvintes de evento ao cartão recém-criado
-          adicionarOuvintesCartao(novoCartao);
-
           // Adiciona o novo cartão à lista de tarefas
           tasksSpace.insertBefore(novoCartao, formulario);
+          contarTarefas();
 
           // Remove o formulário
           tasksSpace.removeChild(formulario);
@@ -56,26 +54,82 @@ export default function adicionarCartao() {
           <h2>${nome}</h2>
           <p>${descricao}</p>
           <div class="statusDatas">
-            <div class="status${
+            <div class="status ${
               checarAtrasado(prazo) ? " atrasado" : ""
             }"></div>
             <span class="dataEntrega">${prazoFormatado}</span>
           </div>
         `;
 
-      return cartao;
-    }
-
-    function adicionarOuvintesCartao(cartao) {
       // Torna o cartão arrastável
       cartao.draggable = true;
 
       // Adiciona um ouvinte de evento para o início do arrastar
-      cartao.addEventListener("dragstart", function (event) {
-        event.dataTransfer.setData("text/plain", cartao.id);
+      cartao.addEventListener("dragstart", function () {
+        draggedCard = this;
+        setTimeout(() => {
+          this.style.display = "none";
+        }, 0);
       });
+
+      cartao.addEventListener("dragend", function () {
+        setTimeout(() => {
+          this.style.display = "flex";
+          draggedCard = null;
+        }, 0);
+      });
+
+      const quadros = document.querySelectorAll(".quadro");
+      let draggedCard = null;
+
+      quadros.forEach((quadro) => {
+        quadro.addEventListener("dragover", function (e) {
+          e.preventDefault();
+        });
+
+        quadro.addEventListener("drop", function () {
+          if (draggedCard) {
+            this.querySelector(".tasksSpace").appendChild(draggedCard);
+            contarTarefas();
+          }
+        });
+      });
+      return cartao;
     }
 
+    function contarTarefas() {
+      const quadroTodoTasks = document.querySelectorAll(".quadroTodo .task");
+      const todoTotal = document.querySelector(".todoTotal");
+
+      const quadroProgressTasks = document.querySelectorAll(
+        ".quadroProgress .task"
+      );
+      const progressTotal = document.querySelector(".progressTotal");
+      console.log(progressTotal);
+      const quadroDoneTasks = document.querySelectorAll(".quadroDone .task");
+      const doneTotal = document.querySelector(".doneTotal");
+
+      console.log(doneTotal);
+
+      let todoContador = 0;
+      let progressContador = 0;
+      let doneContador = 0;
+
+      quadroTodoTasks.forEach(() => {
+        todoContador += 1;
+      });
+      todoTotal.innerText = todoContador;
+
+      quadroProgressTasks.forEach(() => {
+        progressContador += 1;
+      });
+      progressTotal.innerText = progressContador;
+
+      quadroDoneTasks.forEach(() => {
+        doneContador += 1;
+      });
+      doneTotal.innerText = doneContador;
+    }
     function formatarData(data) {
       const options = { day: "2-digit", month: "2-digit", year: "2-digit" };
       const dataObj = new Date(data);
