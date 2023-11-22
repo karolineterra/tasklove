@@ -40,7 +40,7 @@
 }
 .menuLateral {
     background-color: #2f2f2f;
-    width: 8%;
+    width: 120px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -68,22 +68,26 @@
 }
 .profileEdit {
     margin-top: 40px;
+    padding: 4px;
     display: flex;
     flex-direction: row;
     align-items: last baseline;
-    gap: 4px;
-    height: 68px;
+    justify-content: center;
+    /* height: 68px; */
     text-decoration: none;
 }
 
 .profileEdit p {
     color: #fff;
+    text-align: center;
 }
 
 .profileItensColumn {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 4px;
 }
 
@@ -191,6 +195,9 @@
     border: none;
     border-radius: 5px;
 }
+.adicionarCard:hover {
+    background-color: rgba(112, 111, 111, 0.43);
+}
 
 .tasksSpace form {
     background-color: rgba(0, 0, 0, 0.51);;
@@ -238,11 +245,61 @@
 }
 .tasksSpace button[type="submit"] {
     width: 50%;
-    align-self: center;
     padding: 12px 4px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
 }
+.tasksSpace button[type="submit"]:hover {
+    background-color: #035310;
+    color: white;
+}
 
+.cancelarAdicao {
+    width: 50%;
+    padding: 12px 4px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.cancelarAdicao:hover {
+    background-color: #680202;
+    color: white;
+}
+.invisivel {
+    display: none;
+}
 
+.editarCartao {
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+}
+
+.editarCartao img {
+    width: 20px;
+}
+
+.containerFormButtons {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+}
+.excluirCartao {
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+}
+
+.excluirCartao img {
+    width: 20px;
+}
+
+.botoesCartao {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-self: flex-end;
+}

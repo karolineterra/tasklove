@@ -7,36 +7,37 @@ export default function adicionarCartao() {
         const quadro = this.closest(".quadro");
         const tasksSpace = quadro.querySelector(".tasksSpace");
 
-        // Cria um formulário para o novo cartão
         const formulario = document.createElement("form");
         formulario.innerHTML = `
-            <input type="text" name="nome" placeholder="Nome do Cartão" required />
-            <textarea name="descricao" placeholder="Descrição do Cartão" required></textarea>
-            <label for="prazo">Prazo de Entrega</label>
-            <input type="date" name="prazo" min="${getMinDate()}" required />
+          <input type="text" name="nome" placeholder="Nome do Cartão" required />
+          <textarea name="descricao" placeholder="Descrição do Cartão" required></textarea>
+          <label for="prazo">Prazo de Entrega</label>
+          <input type="date" name="prazo" min="${getMinDate()}" required />
+          <div class="containerFormButtons">
             <button type="submit">Adicionar Cartão</button>
-          `;
+            <button type="button" class="cancelarAdicao">Cancelar</button>
+          </div>
+        `;
 
-        // Adiciona o formulário ao quadro
         tasksSpace.appendChild(formulario);
 
-        // Adiciona um ouvinte de evento para o envio do formulário
+        const cancelarAdicaoBotao = formulario.querySelector(".cancelarAdicao");
+        cancelarAdicaoBotao.addEventListener("click", function () {
+          tasksSpace.removeChild(formulario);
+        });
+
         formulario.addEventListener("submit", function (event) {
           event.preventDefault();
 
-          // Recupera os valores do formulário
           const nome = this.querySelector('[name="nome"]').value;
           const descricao = this.querySelector('[name="descricao"]').value;
           const prazo = this.querySelector('[name="prazo"]').value;
 
-          // Cria um novo cartão com os valores do formulário
           const novoCartao = criarCartao(nome, descricao, prazo);
 
-          // Adiciona o novo cartão à lista de tarefas
           tasksSpace.insertBefore(novoCartao, formulario);
           contarTarefas();
 
-          // Remove o formulário
           tasksSpace.removeChild(formulario);
         });
       });
@@ -46,10 +47,10 @@ export default function adicionarCartao() {
       const cartao = document.createElement("div");
       cartao.classList.add("task");
 
-      // Formata a data do prazo
       const prazoFormatado = formatarData(prazo);
+      const quadros = document.querySelectorAll(".quadro");
+      let draggedCard = null;
 
-      // Adiciona conteúdo ao cartão com base nos valores fornecidos
       cartao.innerHTML = `
           <h2>${nome}</h2>
           <p>${descricao}</p>
@@ -59,12 +60,13 @@ export default function adicionarCartao() {
             }"></div>
             <span class="dataEntrega">${prazoFormatado}</span>
           </div>
+          <div class="botoesCartao">
+          <button class="editarCartao"><img src="./img/icon-editar-texto-branco.png"></button>
+          <button class="excluirCartao"><img src="./img/icon-excluir-branco.png"></button>
+        </div>
         `;
 
-      // Torna o cartão arrastável
       cartao.draggable = true;
-
-      // Adiciona um ouvinte de evento para o início do arrastar
       cartao.addEventListener("dragstart", function () {
         draggedCard = this;
         setTimeout(() => {
@@ -79,9 +81,6 @@ export default function adicionarCartao() {
         }, 0);
       });
 
-      const quadros = document.querySelectorAll(".quadro");
-      let draggedCard = null;
-
       quadros.forEach((quadro) => {
         quadro.addEventListener("dragover", function (e) {
           e.preventDefault();
@@ -94,6 +93,17 @@ export default function adicionarCartao() {
           }
         });
       });
+
+      const editarBotao = cartao.querySelector(".editarCartao");
+      editarBotao.addEventListener("click", function () {
+        editarCartao(cartao);
+      });
+
+      const excluirBotao = cartao.querySelector(".excluirCartao");
+      excluirBotao.addEventListener("click", function () {
+        excluirCartao(cartao);
+      });
+
       return cartao;
     }
 
@@ -130,9 +140,12 @@ export default function adicionarCartao() {
       });
       doneTotal.innerText = doneContador;
     }
+
     function formatarData(data) {
+      const [ano, mes, dia] = data.split("-");
+      const dataObj = new Date(ano, mes - 1, dia);
+
       const options = { day: "2-digit", month: "2-digit", year: "2-digit" };
-      const dataObj = new Date(data);
       return new Intl.DateTimeFormat("pt-BR", options).format(dataObj);
     }
 
@@ -144,15 +157,87 @@ export default function adicionarCartao() {
 
     function getMinDate() {
       const hoje = new Date();
-      const ano = hoje.getFullYear();
-      let mes = hoje.getMonth() + 1;
-      let dia = hoje.getDate();
+      const ano = hoje.getUTCFullYear();
+      let mes = hoje.getUTCMonth() + 1; // Meses são zero indexados
+      let dia = hoje.getUTCDate();
 
       // Adiciona um zero à frente do mês ou dia se for menor que 10
       mes = mes < 10 ? `0${mes}` : mes;
       dia = dia < 10 ? `0${dia}` : dia;
 
       return `${ano}-${mes}-${dia}`;
+    }
+
+    // ... (seu código existente)
+
+    function editarCartao(cartao) {
+      const quadro = cartao.closest(".quadro");
+      const tasksSpace = quadro.querySelector(".tasksSpace");
+
+      // Adiciona uma classe para tornar o cartão invisível
+      cartao.classList.add("invisivel");
+
+      // Cria um formulário de edição preenchido com os detalhes do cartão
+      const formularioEdicao = document.createElement("form");
+      formularioEdicao.innerHTML = `
+    <input type="text" name="nome" value="${
+      cartao.querySelector("h2").innerText
+    }" required />
+    <textarea name="descricao" required>${
+      cartao.querySelector("p").innerText
+    }</textarea>
+    <label for="prazo">Prazo de Entrega</label>
+    <input type="date" name="prazo" min="${getMinDate()}" value="${
+        cartao.querySelector(".dataEntrega").innerText
+      }" required />
+    <button type="submit">Salvar</button>
+    <button type="button" class="cancelarEdicao">Cancelar</button>
+  `;
+
+      // Adiciona o formulário de edição ao quadro
+      tasksSpace.insertBefore(formularioEdicao, cartao);
+
+      // Adiciona um ouvinte de evento para o envio do formulário de edição
+      formularioEdicao.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Recupera os valores do formulário de edição
+        const nome = this.querySelector('[name="nome"]').value;
+        const descricao = this.querySelector('[name="descricao"]').value;
+        const prazo = this.querySelector('[name="prazo"]').value;
+        // Atualiza os detalhes do cartão
+        cartao.querySelector("h2").innerText = nome;
+        cartao.querySelector("p").innerText = descricao;
+        cartao.querySelector(".dataEntrega").innerText = formatarData(prazo);
+
+        // Remove a classe que torna o cartão invisível
+        cartao.classList.remove("invisivel");
+
+        // Remove o formulário de edição
+        tasksSpace.removeChild(formularioEdicao);
+      });
+
+      // Adiciona um ouvinte de evento para o botão de cancelar edição
+      const cancelarEdicaoBotao =
+        formularioEdicao.querySelector(".cancelarEdicao");
+      cancelarEdicaoBotao.addEventListener("click", function () {
+        // Remove a classe que torna o cartão invisível
+        cartao.classList.remove("invisivel");
+
+        // Remove o formulário de edição ao cancelar
+        tasksSpace.removeChild(formularioEdicao);
+      });
+    }
+
+    // ... (seu código existente)
+
+    function excluirCartao(cartao) {
+      const quadro = cartao.closest(".quadro");
+      const tasksSpace = quadro.querySelector(".tasksSpace");
+
+      tasksSpace.removeChild(cartao);
+
+      contarTarefas();
     }
   });
 }
